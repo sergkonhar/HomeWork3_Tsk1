@@ -28,7 +28,7 @@ while (!inWord.contains("exit")){
     System.out.println("Choose the option"+"\n"+"add - for adding products"+"\n"+
             "print - for printing what's in the container"+"\n"+"sort - for sorting by price and print"+"\n"+
             "fill- for full filling the container"+"\n"+"index - for accessing by index"+"\n"+"exit - for exit from the program"
-    +"\n"+"empty - empty the container");
+    +"\n"+"empty - empty the container"+"\n"+"avarage - to get avarage price");
     inWord = input.next().toLowerCase();
 if (inWord.contains("exit")){
     System.out.println("\n"+"Exiting the program");
@@ -74,7 +74,9 @@ if(inWord.contains("sor")){
        System.out.println(newContainer.indexacces(quantity).toString());
    }
 
-
+if (inWord.contains("ava")){
+    newContainer.avarage();
+}
 
     System.out.println("\n"+"exit or processed?");
     inWord = input.next().toLowerCase();
@@ -162,5 +164,10 @@ void count(){
 void empty(){
         FirstProduct.quantity =0;
         SecondProduct.quantity=0;
+}
+
+void avarage(){
+    System.out.println(access.stream().map(i -> i.getPriceOfProduct()).mapToInt(i -> i).sum() / access.stream().count());
+
 }
 }
